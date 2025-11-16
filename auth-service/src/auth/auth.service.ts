@@ -1,8 +1,6 @@
 import {
   BadRequestException,
-  Inject,
   Injectable,
-  NotFoundException,
 } from '@nestjs/common';
 import { RegisterDto } from './dto/register.dto';
 import { RedisUtil } from 'src/utils/redis.util';
@@ -10,9 +8,9 @@ import { OtpUtil } from 'src/utils/otp.util';
 import * as bcrypt from 'bcryptjs';
 import { UserCreateProducer } from '../events/producers/auth.producer';
 import { VerifyUserDto } from './dto/verifuUser.dto';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
-import { UserRequest } from './dto/get.user.request.dto';
+import { firstValueFrom } from 'rxjs';
 import { VERIFY } from 'src/constants';
+import { UserRequest } from './types/user';
 
 @Injectable()
 export class AuthService {
